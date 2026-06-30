@@ -160,9 +160,11 @@ mockModulePreservingExports('../../../utils/conversationRecovery.ts', {
 
 const mockGetLastSessionLog = mock(async () => null)
 const mockSessionIdExists = mock(() => false)
+const mockResetSessionFilePointer = mock(async () => {})
 mockModulePreservingExports('../../../utils/sessionStorage.ts', {
   getLastSessionLog: mockGetLastSessionLog,
   sessionIdExists: mockSessionIdExists,
+  resetSessionFilePointer: mockResetSessionFilePointer,
 })
 
 const mockGetCommands = mock(async () => [

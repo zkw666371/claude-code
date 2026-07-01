@@ -146,19 +146,20 @@ export async function handleListSessions(
       cursor: params.cursor,
     })
 
-    const MAX_SESSIONS = 20
-    const sessions = result.sessions.slice(0, MAX_SESSIONS)
+    // const MAX_SESSIONS = 20
+    // const sessions = result.sessions.slice(0, MAX_SESSIONS)
     logSession.info(
       {
         total: result.sessions.length,
-        returned: sessions.length,
+        // returned: sessions.length,
         hasMore: !!result.nextCursor,
       },
       'listed',
     )
 
     send(ws, 'session_list', {
-      sessions: sessions.map((s: acp.SessionInfo) => ({
+      // sessions: sessions.map((s: acp.SessionInfo) => ({
+      sessions: result.sessions.map((s: acp.SessionInfo) => ({
         _meta: s._meta,
         cwd: s.cwd,
         sessionId: s.sessionId,
